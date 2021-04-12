@@ -25,6 +25,11 @@ export default new Router({
       path: '/chatting',
       name: 'chatting',
       component: resolve => require(['../views/chat/chatting.vue'], resolve)
+    },
+    {
+      path: '/gobang',
+      name: 'gobang',
+      component: resolve => require(['../views/game/gobang.vue'], resolve)
     }
   ]
 })

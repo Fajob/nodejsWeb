@@ -6,7 +6,7 @@
       </router-link>
     </mt-header>
     <!-- 信息框 -->
-    <div class="messages">
+    <div class="messages" ref="msgbody">
       <div class="item" v-for="(item, index) in msgs" :key="index" :style="{'justify-content': !item.type?'flex-end':''}">
         <div v-if="!item.type" class="words">
           <div style="text-align: right;">{{item.time}}</div>
@@ -65,6 +65,9 @@
                 }
                 this.msgs.push(item)
                 this.sendMsg = ""
+                setTimeout(() => {
+                  this.$refs.msgbody.scrollTop = this.$refs.msgbody.scrollHeight
+                }, 0)
               }
             }).catch(e => {
               console.log("chat chatting send --", e)
@@ -93,6 +96,9 @@
             type: 0
           }
           that.msgs.push(item)
+          setTimeout(() => {
+            that.$refs.msgbody.scrollTop = that.$refs.msgbody.scrollHeight
+          }, 500)
         }
       }
       this.source.onerror = function(error) {
